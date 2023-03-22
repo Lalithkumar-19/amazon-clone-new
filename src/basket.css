@@ -1,0 +1,87 @@
+.basket {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 20px;
+    width: 60%;
+    border: 1px solid black;
+    background-color: #ffffff;
+    min-height: 250px;
+    max-height: 300px;
+    overflow: hidden;
+}
+
+.basket_info {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.basket_info>p {
+    text-align: center;
+}
+
+.second_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    justify-content: flex-start;
+    background-color: black;
+}
+
+.image {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.price_box {
+    width: 50%;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: brown;
+}
+
+
+/*
+.button-basket {
+    background-color: #cd9042;
+    border: 1px solid;
+    border-color: #cd9042 yellow yellowgreen;
+    color: black;
+    margin-left: 20px;
+    align-content: center;
+    align-items: center;
+}
+
+.basket_price {
+    color: aqua;
+}
+
+.basket_info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    background-color: #cd9042;
+}
+
+.basket_info>p {
+    width: 100%;
+    background-color: blue;
+}*/
+
+.basket_rating {
+    display: flex;
+}
