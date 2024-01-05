@@ -3,12 +3,14 @@ import { initializeApp } from "@firebase/app";
 import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAzoUUyELbdTXq3bPgSTDuybcn4JO2UcgQ",
-  authDomain: "valid-broker-282602.firebaseapp.com",
-  projectId: "valid-broker-282602",
-  storageBucket: "valid-broker-282602.appspot.com",
-  messagingSenderId: "228870729228",
-  appId: "1:228870729228:web:0b6601b0f6d47c64f80829"
+  apiKey: "AIzaSyBqOVx7Utz8cZGmejF3SdVR5TeVfItW0So",
+  authDomain: "clone-17656.firebaseapp.com",
+  databaseURL: "https://clone-17656-default-rtdb.firebaseio.com",
+  projectId: "clone-17656",
+  storageBucket: "clone-17656.appspot.com",
+  messagingSenderId: "84284079776",
+  appId: "1:84284079776:web:3445ad854b53e5d04093c5",
+  measurementId: "G-48Y4F07JL6"
 };
 
 
