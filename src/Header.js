@@ -11,86 +11,91 @@ import { useSelector } from "react-redux";
 
 
 function Header() {
-  const basket=useSelector(state=>state.basket);
-  const dispatch=useDispatch();
-  const [user,setUser]=useState("");
-useEffect(() => {
-  auth.onAuthStateChanged(
-    user=>{
-    setUser(user.email);
-      dispatch({type:"userfound",payload:user.email})
-    }
-  )
+  const basket = useSelector(state => state.basket);
+  const dispatch = useDispatch();
+  const [user, setUser] = useState("");
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(userdata => {
+      console.log(userdata, "user data");
+      if (userdata) {
+        setUser(userdata.email || "");
+        dispatch({ type: "userfound", payload: userdata.email });
+      } else {
+        setUser(""); // Set user to an empty string or handle the null case accordingly
+      }
+    });
 
-  
-}, [])
+    // Clean up the subscription when the component unmounts
+    return () => unsubscribe();
+  }, [dispatch]);
 
 
- 
+
+
 
   return (
     <div className='header'>
 
-<img className='header_logo' alt='LOGO' src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"/>
+      <img className='header_logo' alt='LOGO' src="http://pngimg.com/uploads/amazon/amazon_PNG11.png" />
 
 
 
-<div className="header_search">
-    <input className='header_searchinput'type="text"/>
-  <Search className='header_searchicon'/> 
-</div>
-<div className='header_nav'>
-    <div className='header_option'>
-    <span className='header_optionline_one'>{user?user:"Hello"}</span>
-      <span  style={{textDecoration:"none"}} className='header_optionline_two' > 
-      
-      {
-        user?(<span style={{cursor:"pointer"}} onClick={auth.signOut()}> Sign-out</span>):(
-        <Link to="/login" style={{textDecoration:"none"}}>
-  <span style={{cursor:"pointer"}} > Sign-In</span>
-        </Link>  
-          
-        )
-      }
-      </span>
-    
-  
-    </div>
+      <div className="header_search">
+        <input className='header_searchinput' type="text" />
+        <Search className='header_searchicon' />
+      </div>
+      <div className='header_nav'>
+        <div className='header_option'>
+          <span className='header_optionline_one'>{user ? user : "Hello"}</span>
+          <span style={{ textDecoration: "none" }} className='header_optionline_two' >
+
+            {
+              user ? (<span style={{ cursor: "pointer" }} onClick={() => auth.signOut()}> Sign-out</span>) : (
+                <Link to="/login" style={{ textDecoration: "none" }}>
+                  <span style={{ cursor: "pointer" }} > Sign-In</span>
+                </Link>
+
+              )
+            }
+          </span>
+
+
+        </div>
 
 
 
-    <div className='header_option'>
-    <span className='header_optionline_one'>Returns</span>
-        <span className='header_optionline_two'>orders</span>
+        <div className='header_option'>
+          <span className='header_optionline_one'>Returns</span>
+          <span className='header_optionline_two'>orders</span>
         </div>
 
 
         <div className='header_option'>
-        <span className='header_optionline_one'>your</span>
-        <span className='header_optionline_two'>Prime</span>
+          <span className='header_optionline_one'>your</span>
+          <span className='header_optionline_two'>Prime</span>
 
         </div>
- 
-<div className="header_basket "  >
 
-  <Link to="/checkout" style={{color:"white", textDecoration:"none"}}>
-  <ShoppingCart/>
-  </Link>
+        <div className="header_basket "  >
 
-    
+          <Link to="/checkout" style={{ color: "white", textDecoration: "none" }}>
+            <ShoppingCart />
+          </Link>
 
-    
-  
 
-<span className='header_optionline_two header_basketcount'>
-   {basket.length} 
-   </span> 
-   
 
-  </div>
-  
-  
-</div>
+
+
+
+          <span className='header_optionline_two header_basketcount'>
+            {basket.length}
+          </span>
+
+
+        </div>
+
+
+      </div>
 
 
 
@@ -105,4 +110,4 @@ useEffect(() => {
     </div>
   )
 }
- export default  Header;
+export default Header;
